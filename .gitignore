@@ -1,0 +1,7 @@
+answers/*
+!answers/.gitkeep
+!answers/*.example.json
+*.iso
+.venv
+secrets/*
+./*.ks
