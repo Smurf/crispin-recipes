@@ -1,0 +1,11 @@
+{
+    "type": "kickstart",
+    "output": "iso",
+    "recipe": {
+        "base": ["fedora-base.ks"],
+        "repos": ["fedora-38.ks"],
+        "pre": ["prompt-root-password.ks", "dhcp-auto-network.ks", "part-default-auto-luks.ks"],
+        "packages": ["f38-minimal-desktop.ks"],
+        "post": ["ssh-in-ks.ks", "root-ssh-keys.ks", "ansible-pull.ks", "default-boot.ks"]
+    }
+}
