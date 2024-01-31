@@ -14,6 +14,6 @@ echo "rootpw --iscrypted $hash" > /tmp/root-config.ks
 chvt 1
 exec < /dev/tty1 > /dev/tty1 2> /dev/tty1
 
-%include /tmp/root-config.ks
-
 %end
+
+%include /tmp/root-config.ks
