@@ -1,6 +1,6 @@
-answers/*
-!answers/.gitkeep
-!answers/*.example.json
+*/answers/*
+!.gitkeep
+!*.example.json
 *.iso
 .venv
 secrets/*
