@@ -1,5 +1,5 @@
 # Set root password
-%pre --interpreter /bin/bash
+%pre --interpreter /bin/bash 
 exec < /dev/tty6 > /dev/tty6 2> /dev/tty6
 chvt 6
 
