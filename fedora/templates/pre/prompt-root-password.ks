@@ -7,7 +7,7 @@ read -s -p "Enter root password   : " rootpw
 
 sleep 1
 
-hash=$(echo "$rootpw" | sha256sum | cut -d ' ' -f 1);
+hash=$(openssl passwd -6 "$rootpw")
 
 echo "rootpw --iscrypted $hash" > /tmp/root-config.ks
 
