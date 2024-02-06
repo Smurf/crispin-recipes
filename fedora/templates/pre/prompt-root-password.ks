@@ -3,17 +3,38 @@
 exec < /dev/tty6 > /dev/tty6 2> /dev/tty6
 chvt 6
 
-read -s -p "Enter root password   : " rootpw
+echo "Setting root password:"
+#pw=$(python3 -c 'import getpass,sys;pw=getpass.getpass("root password:");con=getpass.getpass("Confirm password:");print(pw) if pw == con else sys.exit(1)')
+#hashed_pw=$(mkpasswd -m sha-512 -s <<-EOF
+#$pw
+#EOF
+#)
 
-sleep 1
+cat > /tmp/hashpw.py << EOF
+import hashlib, getpass, sys, base64, os
 
-hash=$(openssl passwd -6 "$rootpw")
+iterations = 5000  # Match the iteration count used by openssl passwd -6
+salt = hashlib.sha512(os.urandom(64)).hexdigest().encode()  # Generate random salt
 
-echo "rootpw --iscrypted $hash" > /tmp/root-config.ks
+pw = getpass.getpass("root password:")
+combined = salt + pw.encode()  # Combine password and salt
 
+h = hashlib.new("sha512")
+for _ in range(iterations):
+    h.update(combined)
+
+con = getpass.getpass("confirm root password:")
+encoded_hash = base64.b64encode(h.digest()).decode()  # Encode in base64
+
+print(encoded_hash) if pw == con else sys.exit(1)
+EOF
+
+hashed_pw=$(python3 /tmp/hashpw.py)
+echo "rootpw --iscrypted \$6\$$hashed_pw" > /tmp/root-config.ks
+echo "rootpw --iscrypted $hashed_pw" 
+read -p "PAUSED"
 chvt 1
 exec < /dev/tty1 > /dev/tty1 2> /dev/tty1
-
 %end
 
 %include /tmp/root-config.ks
