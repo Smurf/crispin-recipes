@@ -1,5 +1,3 @@
-
-# Install SSH keys
 %post --interpreter /bin/bash
 # THIS SHOULD BE USED TO DEBUG A KS
 

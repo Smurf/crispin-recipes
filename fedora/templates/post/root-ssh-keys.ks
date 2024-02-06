@@ -1,5 +1,3 @@
-
-# Install SSH keys
 %post --interpreter /bin/bash
 
 #---- Install SSH key ----
