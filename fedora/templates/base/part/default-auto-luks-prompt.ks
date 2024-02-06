@@ -14,4 +14,4 @@ btrfs /usr/lib/modules --subvol --name=@modules fedora
 btrfs /var --subvol --name=@var fedora
 btrfs /var/log --subvol --name=@var_log fedora
 btrfs /home --subvol --name=@home fedora
-#btrfs /.snapshots --subvol --name=@snapshots fedora
+btrfs /.snapshots --subvol --name=@snapshots fedora
