@@ -1,4 +1,3 @@
-# Perform ansible-pull
 %post --interpreter /bin/bash
 exec < /dev/tty6 > /dev/tty6 2> /dev/tty6
 chvt 6

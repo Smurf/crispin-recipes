@@ -1,8 +1,8 @@
-# Set default boot target and remove gnome setup
 %post --interpreter /bin/bash
 exec < /dev/tty6 > /dev/tty6 2> /dev/tty6
 chvt 6
 
+# Set default boot target and remove gnome setup
 dnf remove gnome-initial-setup -y
 ln -sf /lib/systemd/system/runlevel5.target /etc/systemd/system/default.target
 
