@@ -1,6 +1,6 @@
 # Set root password
 %pre --interpreter /bin/bash 
-hashed_pw=$(python3 -c 'import crypt,getpass;pw=getpass.getpass();print("Please set a root password");print(crypt.crypt(pw, crypt.mksalt()) if (pw==getpass.getpass("Verify password: ")) else exit())')
+hashed_pw=$(python3 -c 'import crypt,getpass;pw=getpass.getpass("Root password:");print(crypt.crypt(pw, crypt.mksalt()) if (pw==getpass.getpass("Verify password: ")) else exit())')
 
 echo "rootpw --iscrypted $hashed_pw" > /tmp/root-config.ks
 chvt 1
