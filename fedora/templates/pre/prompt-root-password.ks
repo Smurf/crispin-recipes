@@ -1,15 +1,10 @@
-# Set root password
 %pre --interpreter /bin/bash 
+# Set root password
+
 exec < /dev/tty6 > /dev/tty6 2> /dev/tty6
 chvt 6
 
-echo "Setting root password:"
-#pw=$(python3 -c 'import getpass,sys;pw=getpass.getpass("root password:");con=getpass.getpass("Confirm password:");print(pw) if pw == con else sys.exit(1)')
-#hashed_pw=$(mkpasswd -m sha-512 -s <<-EOF
-#$pw
-#EOF
-#)
-
+echo "Setting root password."
 cat > /tmp/hashpw.py << EOF
 import hashlib, getpass, sys, base64, os
 
