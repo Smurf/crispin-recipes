@@ -6,8 +6,8 @@
                     "part/default-auto-luks-prompt.ks",
                     "network/dhcp-auto-network.ks"],
         "repos": ["fedora-38.ks"],
-        "pre": ["prompt-root-password.ks"],
+        "pre": ["prompt-root-password-new.ks"],
         "packages": ["f38-minimal-desktop.ks"],
-        "post": ["ssh-in-ks.ks", "enable-flatpak.ks", "root-ssh-keys.ks", "ansible-pull.ks", "default-boot.ks"]
+        "post": ["enable-flatpak.ks", "ansible-pull.ks", "root-ssh-keys.ks", "default-boot.ks", "create-user.ks"]
     }
 }
