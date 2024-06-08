@@ -9,6 +9,7 @@ import hashlib
 import base64
 import os
 import getpass
+
 def generate_openssl_passwd6(password):
     # Generate a random salt of 8 bytes
     salt = os.urandom(8)
@@ -41,7 +42,7 @@ while bad_pw:
 print(generate_openssl_passwd6(password))
 EOF
 
-hashed_pw=$(python3 /tmp/hashpw.py)
+hashed_pw=$(chvt 6; python3 /tmp/hashpw.py)
 echo "rootpw --iscrypted $hashed_pw" > /tmp/root-config.ks
 echo "rootpw --iscrypted $hashed_pw" 
 read -p "PAUSED"
