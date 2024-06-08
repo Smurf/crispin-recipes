@@ -23,6 +23,12 @@ distribution-gpg-keys
 -rhythmbox
 -virtualbox-guest-additions
 -gnome-software
+-gnome-tour
+-gnome-boxes
+-gnome-maps
+-snapshot
+-mediawriter
 -PackageKit
+-PackageKit-command-not-found
 %end
 
