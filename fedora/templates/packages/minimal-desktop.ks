@@ -13,7 +13,7 @@ cracklib
 cracklib-dicts
 libpwquality
 
-# Install rpmfusion gpg keys
+# Install gpg keys
 distribution-gpg-keys
 
 # Exclude unwanted packages
@@ -23,5 +23,6 @@ distribution-gpg-keys
 -rhythmbox
 -virtualbox-guest-additions
 -gnome-software
+-PackageKit
 %end
 
