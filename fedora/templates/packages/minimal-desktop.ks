@@ -16,6 +16,9 @@ libpwquality
 # Install gpg keys
 distribution-gpg-keys
 
+#zram
+zram
+
 # Exclude unwanted packages
 -gfs2-utils
 -reiserfs-utils
