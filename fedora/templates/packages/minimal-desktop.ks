@@ -34,4 +34,7 @@ zram
 -PackageKit
 -PackageKit-command-not-found
 %end
-
+# Enable zram, rpm does not properly create zram device
+%post --interpreter /bin/bash
+systemctl enable zram-swap --now
+%end
