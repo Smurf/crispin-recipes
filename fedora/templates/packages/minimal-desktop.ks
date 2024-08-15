@@ -36,5 +36,7 @@ zram
 %end
 # Enable zram, rpm does not properly create zram device
 %post --interpreter /bin/bash
-systemctl enable zram-swap --now
+swapon
+systemctl enable systemd-zram-setup@zram0
+systemctl enable zram-swap
 %end
