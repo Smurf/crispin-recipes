@@ -38,5 +38,4 @@ zram
 %post --interpreter /bin/bash
 swapon
 systemctl enable systemd-zram-setup@zram0
-systemctl enable zram-swap
 %end
