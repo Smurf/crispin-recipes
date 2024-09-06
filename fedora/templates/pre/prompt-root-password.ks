@@ -1,8 +1,8 @@
 %pre --interpreter /bin/bash 
 # Set root password
 
-exec < /dev/tty6 > /dev/tty6 2> /dev/tty6
-chvt 6
+#exec < /dev/tty6 > /dev/tty6 2> /dev/tty6
+#chvt 6
 
 cat > /tmp/hashpw.py << EOF
 import hashlib
@@ -42,12 +42,12 @@ while bad_pw:
 print(generate_openssl_passwd6(password))
 EOF
 
-hashed_pw=$(chvt 6; python3 /tmp/hashpw.py)
+hashed_pw=$(python3 /tmp/hashpw.py | tail -n 1)
 echo "rootpw --iscrypted $hashed_pw" > /tmp/root-config.ks
 echo "rootpw --iscrypted $hashed_pw" 
 read -p "PAUSED"
-chvt 1
-exec < /dev/tty1 > /dev/tty1 2> /dev/tty1
+#chvt 1
+#exec < /dev/tty1 > /dev/tty1 2> /dev/tty1
 %end
 
 %include /tmp/root-config.ks
