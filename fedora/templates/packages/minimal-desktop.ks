@@ -18,6 +18,8 @@ distribution-gpg-keys
 
 #zram
 zram
+zram-generator
+zram-generator-defaults
 
 # Exclude unwanted packages
 -gfs2-utils
@@ -33,9 +35,4 @@ zram
 -mediawriter
 -PackageKit
 -PackageKit-command-not-found
-%end
-# Enable zram, rpm does not properly create zram device
-%post --interpreter /bin/bash
-swapon
-systemctl enable systemd-zram-setup@zram0
 %end
