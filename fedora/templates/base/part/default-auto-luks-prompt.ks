@@ -15,3 +15,20 @@ btrfs /var --subvol --name=@var fedora
 btrfs /var/log --subvol --name=@var_log fedora
 btrfs /home --subvol --name=@home fedora
 btrfs /.snapshots --subvol --name=@snapshots fedora
+
+
+#Required for separate modules subvolume
+#without system may boot without all modules loaded
+%post --interpreter /bin/bash
+
+mkdir -p /etc/systemd/system/systemd-modules-load.service.d
+echo "[Unit]\nRequiresMountsFor=/usr/lib/modules" > /etc/systemd/system/systemd-modules-load.service.d/override.conf
+
+mkdir -p /etc/sysstemd/system/systemd-zram-setup@zram0.service.d/
+echo "[Unit]\nRequiresMountsFor=/usr/lib/modules" > /etc/systemd/system/systemd-zram-setup@zram0.service.d/override.conf
+
+echo "zram" > /etc/modules-load.d/zram.conf
+
+systemctl daemon-reload
+dracut --force
+%end
